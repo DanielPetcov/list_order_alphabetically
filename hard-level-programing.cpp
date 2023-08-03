@@ -3,12 +3,20 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
+// constants
+const std::string file_name = "list.txt";
+
+
+// functions
 int readFile(std::vector<std::string> &array);
+int orderAlph(std::vector<std::string> &array);
 
 int main(){
     std::vector<std::string> list;
     readFile(list);
+    orderAlph(list);
 
     std::cout << "*****************" << '\n';
 
@@ -21,7 +29,7 @@ int main(){
 
 int readFile(std::vector<std::string> &array){
 
-    std::ifstream file("list.txt");
+    std::ifstream file(file_name);
 
     // checks if the file was open correct
     if (!file.is_open()) {
@@ -35,6 +43,12 @@ int readFile(std::vector<std::string> &array){
     }
 
     file.close();
+
+    return 0;
+}
+
+int orderAlph(std::vector<std::string> &array){
+    std::sort(array.begin(), array.end());
 
     return 0;
 }
